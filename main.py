@@ -39,9 +39,9 @@ def save():
     else:
         msg = f"Are you sure you want to save the Password Information to database\nSite:{site}\nUsername:{username}\nPassword{password} "
         choice = messagebox.askyesno(message=msg)
-    with open("save.txt", 'a') as file:
-        if choice:
-            file.write(f"Site:{site},Username:{username},Password{password}\n")
+        with open("save.txt", 'a') as file:
+            if choice:
+                file.write(f"Site:{site},Username:{username},Password{password}\n")
 
 
 # ---------------------------- UI SETUP ------------------------------- #
