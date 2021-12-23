@@ -1,6 +1,30 @@
 import tkinter as tk
 from tkinter import messagebox
 import random
+import pyperclip
+# ----------------------------- SETUP ---------------------------------------#
+def setup():
+    print('hello')
+# -----------------------------MASTER LOGIN---------------------------------------#
+def loginFunc():
+
+    loginWin = tk.Toplevel(window)
+    loginWin.title("Login")
+    loginWin.config(padx=10,pady=10)
+    loginNameLabel = tk.Label(loginWin, text="Username",padx=10,pady=5)
+    loginPassLabel = tk.Label(loginWin, text="Password",padx=10,pady=5)
+    loginConfPassLabel = tk.Label(loginWin, text="Confirm Password", padx=10, pady=5)
+    loginName=tk.Entry(loginWin)
+    loginPass=tk.Entry(loginWin)
+    confPass=tk.Entry(loginWin)
+    submit=tk.Button(loginWin,text="Submit", command=setup)
+    loginNameLabel.grid(column=0, row=0, sticky='w')
+    loginPassLabel.grid(column=0, row=1,sticky='w')
+    loginConfPassLabel.grid(column=0,row=2,sticky='w')
+    confPass.grid(column=1,row=2)
+    loginName.grid(column=1,row=0)
+    loginPass.grid(column=1,row=1)
+    submit.grid(column=0,row=3,columnspan=2,sticky='ew')
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
@@ -24,8 +48,9 @@ def generatePass():
     passwordGen = ''
     for i in password_str:
         passwordGen += i
-    password_entry.delete(0,tk.END)
-    password_entry.insert(0,passwordGen)
+    password_entry.delete(0, tk.END)
+    password_entry.insert(0, passwordGen)
+    pyperclip.copy(passwordGen)
 
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
@@ -42,6 +67,9 @@ def save():
         with open("save.txt", 'a') as file:
             if choice:
                 file.write(f"Site:{site},Username:{username},Password{password}\n")
+                username_entry.delete(0, tk.END)
+                password_entry.delete(0, tk.END)
+                site_entry.delete(0, tk.END)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -53,6 +81,9 @@ canvas = tk.Canvas(height=200, width=200)
 logoImage = tk.PhotoImage(file="logo.png")
 canvas.create_image(100, 100, image=logoImage)
 canvas.grid(column=1, row=0)
+
+loginButton = tk.Button(text="Login/SignUp", command=loginFunc)
+loginButton.grid(row=0, column=2, sticky='en')
 
 label1 = tk.Label(text="Website")
 label1.grid(column=0, row=1, sticky='w')
@@ -70,7 +101,7 @@ username_entry.insert(0, "sidharth@gmail.com")
 password_entry = tk.Entry()
 password_entry.grid(row=3, column=1, sticky='we')
 
-generatePass_but = tk.Button(text="Generate Password",command=generatePass)
+generatePass_but = tk.Button(text="Generate Password", command=generatePass)
 generatePass_but.grid(row=3, column=2)
 store_but = tk.Button(text="SAVE/ADD", command=save)
 store_but.grid(row=4, column=1, columnspan=2, sticky="we")
