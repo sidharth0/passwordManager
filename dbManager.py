@@ -1,6 +1,9 @@
 import sqlite3
 from sqlite3 import Error
 
+DATABASE = "database.db"
+
+
 def create_connection(db_file):
     """ create a database connection to a SQLite database """
     conn = None
@@ -12,20 +15,13 @@ def create_connection(db_file):
     finally:
         return conn
 
-def firstRun(c,table):
-    c.execute(table)
 
-db=create_connection(r"database.db")
-c=db.cursor()
-table1=""" CREATE TABLE IF NOT EXISTS userInfo (
-                                        id integer PRIMARY KEY,
-                                        name text NOT NULL,
-                                        password text NOT NULL,
-                                    ); """
+def firstRun():
+    db = create_connection(DATABASE)
 
+    table = '''CREATE TABLE userInfo (username text NOT NULL,password text NOT NULL);'''
+    db.execute(table)
+    db.commit()
+    db.close()
 
-firstRun(c,table1)
-db.close()
-
-
-
+#firstRun()

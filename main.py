@@ -5,12 +5,14 @@ import pyperclip
 from passGenerator import generatePass
 from savePass import save
 from signup import signup
+
+
 # ----------------------------- SETUP ---------------------------------------#
 
-#-------------------------------LOGIN---------------------------------------#
+# -------------------------------LOGIN---------------------------------------#
 def login():
-
     pass
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = tk.Tk()
@@ -22,10 +24,9 @@ logoImage = tk.PhotoImage(file="logo.png")
 canvas.create_image(100, 100, image=logoImage)
 canvas.grid(column=1, row=0)
 
-loginButton = tk.Button(text="SignUp", command=signup)
+loginButton = tk.Button(text="SignUp", command=lambda: signup(window))
 loginButton.grid(row=0, column=2, sticky='en')
-loginButton=tk.Button(text="Login",command=login)
-
+loginButton = tk.Button(text="Login", command=login)
 
 label1 = tk.Label(text="Website")
 label1.grid(column=0, row=1, sticky='w')
