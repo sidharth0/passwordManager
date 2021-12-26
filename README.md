@@ -19,3 +19,5 @@ The user can make the software even more secure by removing the saved password f
 #### Sqlite3 -- Database Management
 #### Cryptography -- Encrypting and Decrypting the credentials
 #### Json -- Storing the Encrypted credentials in a file
+## Running the Program
+After installing all the required libraries run main.py file.
