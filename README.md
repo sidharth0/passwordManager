@@ -14,3 +14,8 @@ There is a password generator feature available with the software. It is advisab
 Once the credentials are entered by the user. The software provides the user with the option to search from the list of saved passwords.
 ### Added Security
 The user can make the software even more secure by removing the saved password file after use from the software directory. The user can paste the saved password file only when he wants to use the software. The user can further increase the security by removing the database file from the software directory. It is the database file which contains the key for decrypting the saved passwords.
+### Library Used 
+tkinter-- GUI Development
+sqlite-- Database Management
+cryptography-- Encrypting and Decrypting the credentials
+json-- Storing the Encrypted credentials in a file
