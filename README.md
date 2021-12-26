@@ -21,3 +21,4 @@ The user can make the software even more secure by removing the saved password f
 #### Json -- Storing the Encrypted credentials in a file
 ## Running the Program
 After installing all the required libraries run main.py file.
+### Python Version 3.10
